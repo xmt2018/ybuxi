@@ -1,0 +1,27 @@
+<!----------   wxs start ----------->
+<wxs module="utils">
+var bem = require('./bem.wxs').bem;
+var memoize = require('./memoize.wxs').memoize;
+
+function isSrc(url) {
+  return url.indexOf('http') === 0 || url.indexOf('data:image') === 0 || url.indexOf('//') === 0;
+}
+
+module.exports = {
+  bem: memoize(bem),
+  isSrc: isSrc,
+  memoize: memoize
+};
+</wxs>
+<!----------   wxs end   ----------->
+
+
+<button id="{{ id }}" class="custom-class {{ utils.bem('button', [type, size, { block, round, plain, square, loading, disabled, hairline, unclickable: disabled || loading }]) }} {{ hairline ? 'van-hairline--surround' : '' }}" open-type="{{ openType }}" hover-class="van-button--active hover-class" lang="{{ lang }}" business-id="{{ businessId }}" session-from="{{ sessionFrom }}" send-message-title="{{ sendMessageTitle }}" send-message-path="{{ sendMessagePath }}" send-message-img="{{ sendMessageImg }}" show-message-card="{{ showMessageCard }}" app-parameter="{{ appParameter }}" aria-label="{{ ariaLabel }}" bindtap="onClick" bindgetuserinfo="bindGetUserInfo" bindcontact="bindContact" bindgetphonenumber="bindGetPhoneNumber" binderror="bindError" bindlaunchapp="bindLaunchApp" bindopensetting="bindOpenSetting">
+  <block wx:if="{{ loading }}">
+    <van-loading custom-class="loading-class" size="{{ loadingSize }}" color="{{ type === 'default' ? '#c9c9c9' : '' }}"></van-loading>
+    <view wx:if="{{ loadingText }}" class="van-button__loading-text">
+      {{ loadingText }}
+    </view>
+  </block>
+  <slot wx:else=""></slot>
+</button>

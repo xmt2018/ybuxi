@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "WePY 2.0 Feature Demo",
+    "component": true,
+    "usingComponents": {
+        "van-button": "../components/vant-weapp/dist/button/index"
+    }
+}

@@ -1,0 +1,6 @@
+
+<view>
+iiii
+<van-button bind_init="_initComponent" type="primary">主要按钮</van-button>
+9999
+</view>
